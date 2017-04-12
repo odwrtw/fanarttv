@@ -6,8 +6,8 @@ import (
 	"strconv"
 )
 
-// Resource represent a result from the API
-type Resource struct {
+// ImageInfo represent an image with its associated infos
+type ImageInfo struct {
 	ID    string `json:"id"`
 	URL   string `json:"url"`
 	Lang  string `json:"lang"`
@@ -18,7 +18,7 @@ type Resource struct {
 }
 
 // UnmarshalJSON is a custom unmarshal function to handle likes as ints
-func (r *Resource) UnmarshalJSON(data []byte) error {
+func (i *ImageInfo) UnmarshalJSON(data []byte) error {
 	aux := struct {
 		ID     *string `json:"id"`
 		URL    *string `json:"url"`
@@ -26,10 +26,10 @@ func (r *Resource) UnmarshalJSON(data []byte) error {
 		Season *string `json:"season"`
 		Likes  string  `json:"likes"`
 	}{
-		ID:     &r.ID,
-		URL:    &r.URL,
-		Lang:   &r.Lang,
-		Season: &r.Season,
+		ID:     &i.ID,
+		URL:    &i.URL,
+		Lang:   &i.Lang,
+		Season: &i.Season,
 	}
 	if err := json.Unmarshal(data, &aux); err != nil {
 		return err
@@ -40,21 +40,21 @@ func (r *Resource) UnmarshalJSON(data []byte) error {
 	if err != nil {
 		return err
 	}
-	r.Likes = likes
+	i.Likes = likes
 
 	return nil
 }
 
-// Best returns the best resource based on the likes
-func Best(res []*Resource) *Resource {
-	size := len(res)
+// Best returns the best image based on the likes
+func Best(imgs []*ImageInfo) *ImageInfo {
+	size := len(imgs)
 	switch size {
 	case 0:
 		return nil
 	case 1:
-		return res[0]
+		return imgs[0]
 	default:
-		sort.Slice(res, func(i, j int) bool { return res[i].Likes > res[j].Likes })
-		return res[0]
+		sort.Slice(imgs, func(i, j int) bool { return imgs[i].Likes > imgs[j].Likes })
+		return imgs[0]
 	}
 }

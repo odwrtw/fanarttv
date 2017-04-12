@@ -5,18 +5,18 @@ type ShowResult struct {
 	Name   string `json:"name"`
 	TvdbID string `json:"thetvdb_id"`
 
-	CharacterArt   []*Resource `json:"characterart"`
-	ClearArt       []*Resource `json:"clearart"`
-	ClearLogo      []*Resource `json:"clearlogo"`
-	HDClearArt     []*Resource `json:"hdclearart"`
-	HDTVLogo       []*Resource `json:"hdtvlogo"`
-	SeasonBanner   []*Resource `json:"seasonbanner"`
-	SeasonPoster   []*Resource `json:"seasonposter"`
-	SeasonThumb    []*Resource `json:"seasonthumb"`
-	ShowBackground []*Resource `json:"showbackground"`
-	TvBanner       []*Resource `json:"tvbanner"`
-	TvPoster       []*Resource `json:"tvposter"`
-	TvThumb        []*Resource `json:"tvthumb"`
+	Backgrounds   []*ImageInfo `json:"showbackground"`
+	Banners       []*ImageInfo `json:"tvbanner"`
+	CharacterArts []*ImageInfo `json:"characterart"`
+	ClearArts     []*ImageInfo `json:"clearart"`
+	ClearLogos    []*ImageInfo `json:"clearlogo"`
+	HDClearArts   []*ImageInfo `json:"hdclearart"`
+	HDTVLogos     []*ImageInfo `json:"hdtvlogo"`
+	Posters       []*ImageInfo `json:"tvposter"`
+	SeasonBanners []*ImageInfo `json:"seasonbanner"`
+	SeasonPosters []*ImageInfo `json:"seasonposter"`
+	SeasonThumbs  []*ImageInfo `json:"seasonthumb"`
+	Thumbs        []*ImageInfo `json:"tvthumb"`
 }
 
 // GetShowImages returns the images for a show

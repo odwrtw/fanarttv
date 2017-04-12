@@ -6,15 +6,15 @@ type MovieResult struct {
 	TmdbID string `json:"tmdb_id"`
 	ImdbID string `json:"imdb_id"`
 
-	HDMovieClearArt []*Resource `json:"hdmovieclearart"`
-	HDMovieLogo     []*Resource `json:"hdmovielogo"`
-	MovieArt        []*Resource `json:"movieart"`
-	MovieBackground []*Resource `json:"moviebackground"`
-	MovieBanner     []*Resource `json:"moviebanner"`
-	MovieDisc       []*Resource `json:"moviedisc"`
-	MovieLogo       []*Resource `json:"movielogo"`
-	MoviePoster     []*Resource `json:"movieposter"`
-	MovieThumb      []*Resource `json:"moviethumb"`
+	Arts        []*ImageInfo `json:"movieart"`
+	Backgrounds []*ImageInfo `json:"moviebackground"`
+	Banners     []*ImageInfo `json:"moviebanner"`
+	Discs       []*ImageInfo `json:"moviedisc"`
+	HDClearArts []*ImageInfo `json:"hdmovieclearart"`
+	HDLogos     []*ImageInfo `json:"hdmovielogo"`
+	Logos       []*ImageInfo `json:"movielogo"`
+	Posters     []*ImageInfo `json:"movieposter"`
+	Thumbs      []*ImageInfo `json:"moviethumb"`
 }
 
 // GetMovieImages returns the images for a movie
